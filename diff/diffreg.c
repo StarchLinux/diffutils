@@ -216,7 +216,7 @@ static long *ixold;		/* will be overlaid on klist */
 static struct cand *clist;	/* merely a free storage pot for candidates */
 static int   clistlen;		/* the length of clist */
 static struct line *sfile[2];	/* shortened by pruning common prefix/suffix */
-static u_char *chrtran;		/* translation table for case-folding */
+static unsigned char *chrtran;	/* translation table for case-folding */
 static struct context_vec *context_vec_start;
 static struct context_vec *context_vec_end;
 static struct context_vec *context_vec_ptr;
@@ -231,7 +231,7 @@ static int lastmatchline;
  * chrtran points to one of 2 translation tables: cup2low if folding upper to
  * lower case clow2low if not folding case
  */
-u_char clow2low[256] = {
+unsigned char clow2low[256] = {
 	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a,
 	0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15,
 	0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20,
@@ -258,7 +258,7 @@ u_char clow2low[256] = {
 	0xfd, 0xfe, 0xff
 };
 
-u_char cup2low[256] = {
+unsigned char cup2low[256] = {
 	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a,
 	0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15,
 	0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20,
@@ -643,7 +643,7 @@ stone(int *a, int n, int *b, int *c, int flags)
 {
 	int i, k, y, j, l;
 	int oldc, tc, oldl, sq;
-	u_int numtries, bound;
+	unsigned int numtries, bound;
 
 	if (flags & D_MINIMAL)
 		bound = UINT_MAX;

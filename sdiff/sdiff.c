@@ -98,7 +98,7 @@ mktmpcpy(const char *source_file)
 	struct stat sb;
 	ssize_t rcount;
 	int ifd, ofd;
-	u_char buf[BUFSIZ];
+	unsigned char buf[BUFSIZ];
 	char *target_file;
 
 	/* Open input and output. */

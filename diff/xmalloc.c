@@ -48,7 +48,7 @@ xcalloc(size_t nmemb, size_t size)
 	ptr = calloc(nmemb, size);
 	if (ptr == NULL)
 		errx(2, "xcalloc: out of memory (allocating %lu bytes)",
-		    (u_long)(size * nmemb));
+		    (unsigned long)(size * nmemb));
 	return ptr;
 }
 
