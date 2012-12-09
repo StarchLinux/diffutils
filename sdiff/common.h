@@ -5,4 +5,4 @@
  * Public domain.
  */
 
-__dead void cleanup(const char *);
+void cleanup(const char *);

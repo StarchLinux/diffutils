@@ -135,10 +135,10 @@ void merge(int, int);
 void prange(struct range *);
 void repos(int);
 void separate(const char *);
-__dead void edscript(int);
-__dead void trouble(void);
+void edscript(int);
+void trouble(void);
 void increase(void);
-__dead void usage(void);
+void usage(void);
 
 int
 main(int argc, char **argv)
@@ -508,7 +508,7 @@ repos(int nchar)
 		(void)fseek(fp[i], (long)-nchar, SEEK_CUR);
 }
 
-__dead void
+void
 trouble(void)
 {
 	errx(EXIT_FAILURE, "logic error");
@@ -534,7 +534,7 @@ edit(struct diff *diff, int dup, int j)
 }
 
 /* regurgitate */
-__dead void
+void
 edscript(int n)
 {
 	int j,k;
@@ -597,7 +597,7 @@ increase(void)
 }
 
 
-__dead void
+void
 usage(void)
 {
 	extern char *__progname;

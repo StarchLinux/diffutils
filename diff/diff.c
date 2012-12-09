@@ -74,7 +74,7 @@ static struct option longopts[] = {
 	{ NULL,				0,			0,	'\0'}
 };
 
-__dead void usage(void);
+void usage(void);
 void push_excludes(char *);
 void push_ignore_pats(char *);
 void read_excludes_file(char *file);
@@ -395,7 +395,7 @@ print_status(int val, char *path1, char *path2, char *entry)
 	}
 }
 
-__dead void
+void
 usage(void)
 {
 	(void)fprintf(stderr,

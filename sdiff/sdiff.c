@@ -55,7 +55,7 @@ static void printd(FILE *, size_t);
 static void println(const char *, const char, const char *);
 static void processq(void);
 static void prompt(const char *, const char *);
-__dead static void usage(void);
+static void usage(void);
 static char *xfgets(FILE *);
 
 SIMPLEQ_HEAD(, diffline) diffhead = SIMPLEQ_HEAD_INITIALIZER(diffhead);
