@@ -6,7 +6,6 @@
  */
 
 #include <sys/param.h>
-#include <sys/queue.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -26,6 +25,7 @@
 
 #include "common.h"
 #include "extern.h"
+#include "queue.h"
 
 #define WIDTH 130
 /*
