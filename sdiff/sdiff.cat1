@@ -1,0 +1,105 @@
+SDIFF(1)                  BSD General Commands Manual                 SDIFF(1)
+
+NNAAMMEE
+     ssddiiffff — side-by-side diff
+
+SSYYNNOOPPSSIISS
+     ssddiiffff [--aabbddiillssttWW] [--II _r_e_g_e_x_p] [--oo _o_u_t_f_i_l_e] [--ww _w_i_d_t_h] _f_i_l_e_1 _f_i_l_e_2
+
+DDEESSCCRRIIPPTTIIOONN
+     ssddiiffff displays two files side by side, with any differences between the
+     two highlighted as follows: new lines are marked with ‘>’; deleted lines
+     are marked with ‘<’; and changed lines are marked with ‘|’.
+
+     ssddiiffff can also be used to interactively merge two files, prompting at
+     each set of differences.  See the --oo option for an explanation.
+
+     The options are:
+
+     --ll      Only print the left column for identical lines.
+
+     --oo _o_u_t_f_i_l_e
+             Interactively merge _f_i_l_e_1 and _f_i_l_e_2 into _o_u_t_f_i_l_e.  In this mode,
+             the user is prompted for each set of differences.  See EDITOR and
+             VISUAL, below, for details of which editor, if any, is invoked.
+
+             The commands are as follows:
+
+             ll | 11   Choose left set of diffs.
+
+             rr | 22   Choose right set of diffs.
+
+             ss       Silent mode – identical lines are not printed.
+
+             vv       Verbose mode – identical lines are printed.
+
+             ee       Start editing an empty file, which will be merged into
+                     _o_u_t_f_i_l_e upon exiting the editor.
+
+             ee ll     Start editing file with left set of diffs.
+
+             ee rr     Start editing file with right set of diffs.
+
+             ee bb     Start editing file with both sets of diffs.
+
+             qq       Quit ssddiiffff.
+
+     --ss      Skip identical lines.
+
+     --ww _w_i_d_t_h
+             Print a maximum of _w_i_d_t_h characters on each line.  The default is
+             130 characters.
+
+     Options passed to diff(1) are:
+
+     --aa      Treat _f_i_l_e_1 and _f_i_l_e_2 as text files.
+
+     --bb      Ignore trailing blank spaces.
+
+     --dd      Minimize diff size.
+
+     --II _r_e_g_e_x_p
+             Ignore line changes matching _r_e_g_e_x_p.  All lines in the change
+             must match _r_e_g_e_x_p for the change to be ignored.
+
+     --ii      Do a case-insensitive comparison.
+
+     --tt      Expand tabs to spaces.
+
+     --WW      Ignore all spaces (the --ww flag is passed to diff(1)).
+
+EENNVVIIRROONNMMEENNTT
+     EDITOR, VISUAL
+             Specifies an editor to use with the --oo option.  If both EDITOR
+             and VISUAL are set, VISUAL takes precedence.  If neither EDITOR
+             nor VISUAL are set, the default is vi(1).
+
+     TMPDIR  Specifies a directory for temporary files to be created.  The
+             default is _/_t_m_p.
+
+EEXXIITT SSTTAATTUUSS
+     The ssddiiffff utility exits with one of the following values:
+
+           0       No differences were found.
+           1       Differences were found.
+           >1      An error occurred.
+
+SSEEEE AALLSSOO
+     cmp(1), diff(1), diff3(1), vi(1), re_format(7)
+
+AAUUTTHHOORRSS
+     ssddiiffff was written from scratch for the public domain by Ray Lai
+     ⟨ray@cyth.net⟩.
+
+CCAAVVEEAATTSS
+     Although undocumented, ssddiiffff supports most long options supported by GNU
+     sdiff, though some require GNU diff.
+
+     Tabs are treated as anywhere from one to eight characters wide, depending
+     on the current column.  Terminals that treat tabs as eight characters
+     wide will look best.
+
+BBUUGGSS
+     ssddiiffff may not work with binary data.
+
+BSD                             August 8, 2012                             BSD
