@@ -121,6 +121,7 @@ int eflag;
 int oflag;		/* indicates whether to mark overlaps (-E or -X)*/
 int debug  = 0;
 char f1mark[40], f3mark[40];	/* markers for -E and -X */
+char *__progname;
 
 int duplicate(struct range *, struct range *);
 int edit(struct diff *, int, int);
@@ -145,6 +146,8 @@ main(int argc, char **argv)
 {
 	int ch, i, m, n;
 
+	__progname = argv[0];
+	
 	eflag = 0;
 	oflag = 0;
 	while ((ch = getopt(argc, argv, "EeXx3")) != -1) {
@@ -600,8 +603,6 @@ increase(void)
 void
 usage(void)
 {
-	extern char *__progname;
-
 	fprintf(stderr, "usage: %s [-exEX3] /tmp/d3a.?????????? "
 	    "/tmp/d3b.?????????? file1 file2 file3\n", __progname);
 	exit(EXIT_FAILURE);
