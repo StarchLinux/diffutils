@@ -125,7 +125,7 @@ char f1mark[40], f3mark[40];	/* markers for -E and -X */
 int duplicate(struct range *, struct range *);
 int edit(struct diff *, int, int);
 char *getchange(FILE *);
-char *getline(FILE *, size_t *);
+char *f0getln(FILE *, size_t *);
 int number(char **);
 int readin(char *, struct diff **);
 int skip(int, int, char *);
@@ -254,7 +254,7 @@ getchange(FILE *b)
 {
 	char *line;
 
-	while ((line = getline(b, NULL))) {
+	while ((line = f0getln(b, NULL))) {
 		if (isdigit((unsigned char)line[0]))
 			return (line);
 	}
@@ -262,7 +262,7 @@ getchange(FILE *b)
 }
 
 char *
-getline(FILE *b, size_t *n)
+f0getln(FILE *b, size_t *n)
 {
 	char *cp;
 	size_t len;
@@ -457,7 +457,7 @@ skip(int i, int from, char *pr)
 	char *line;
 
 	for (n = 0; cline[i] < from - 1; n += j) {
-		if ((line = getline(fp[i], &j)) == NULL)
+		if ((line = f0getln(fp[i], &j)) == NULL)
 			trouble();
 		if (pr != NULL)
 			printf("%s%s", pr, line);
