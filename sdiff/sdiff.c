@@ -66,6 +66,7 @@ int	 lflag;		/* print only left column for identical lines */
 int	 sflag;		/* skip identical lines */
 FILE	*outfp;		/* file to save changes to */
 const char *tmpdir;	/* TMPDIR or /tmp */
+char *__progname;
 
 static struct option longopts[] = {
 	{ "text",			no_argument,		NULL,	'a' },
@@ -162,6 +163,8 @@ main(int argc, char **argv)
 	const char *outfile = NULL;
 	char **diffargv, *diffprog = "diff", *filename1, *filename2,
 	    *tmp1, *tmp2, *s1, *s2;
+
+	__progname = argv[0];
 
 	/*
 	 * Process diff flags.
@@ -1033,8 +1036,6 @@ int_usage(void)
 static void
 usage(void)
 {
-	extern char *__progname;
-
 	fprintf(stderr,
 	    "usage: %s [-abdilstW] [-I regexp] [-o outfile] [-w width] file1 file2\n",
 	    __progname);
